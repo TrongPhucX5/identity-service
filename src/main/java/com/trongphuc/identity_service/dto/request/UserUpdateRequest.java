@@ -1,4 +1,4 @@
-package com.trongphuc.identity_service.dto;
+package com.trongphuc.identity_service.dto.request;
 
 import java.time.LocalDate;
 

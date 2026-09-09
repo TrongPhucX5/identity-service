@@ -1,7 +1,7 @@
 package com.trongphuc.identity_service.controller;
 
-import com.trongphuc.identity_service.dto.UserCreationRequest;
-import com.trongphuc.identity_service.dto.UserUpdateRequest;
+import com.trongphuc.identity_service.dto.request.UserCreationRequest;
+import com.trongphuc.identity_service.dto.request.UserUpdateRequest;
 import com.trongphuc.identity_service.entity.User;
 import com.trongphuc.identity_service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.trongphuc.identity_service.service;
 
-import com.trongphuc.identity_service.dto.UserCreationRequest;
-import com.trongphuc.identity_service.dto.UserUpdateRequest;
+import com.trongphuc.identity_service.dto.request.UserCreationRequest;
+import com.trongphuc.identity_service.dto.request.UserUpdateRequest;
 import com.trongphuc.identity_service.entity.User;
 import com.trongphuc.identity_service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,9 @@ public class UserService {
 
     public User createUser(UserCreationRequest request){
         User user = new User();
+
+        if (userRepository.existsByUsername(request.getUsername()))
+            throw new RuntimeException("User existed!");
 
         user.setUsername(request.getUsername());
         user.setPassword(request.getPassword());
