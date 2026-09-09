@@ -1,5 +1,6 @@
 package com.trongphuc.identity_service.controller;
 
+import com.trongphuc.identity_service.dto.request.ApiRespond;
 import com.trongphuc.identity_service.dto.request.UserCreationRequest;
 import com.trongphuc.identity_service.dto.request.UserUpdateRequest;
 import com.trongphuc.identity_service.entity.User;
@@ -17,8 +18,11 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    User createUser(@RequestBody @Valid UserCreationRequest request) {
-        return userService.createUser(request);
+    ApiRespond<User> createUser(@RequestBody @Valid UserCreationRequest request) {
+        ApiRespond<User> apiRespond = new ApiRespond<>();
+
+        apiRespond.setResult(userService.createUser(request));
+        return apiRespond;
     }
 
     @GetMapping
