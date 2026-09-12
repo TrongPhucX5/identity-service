@@ -46,7 +46,7 @@ public class UserService {
 
     public UserResponse updateUser(String userId, UserUpdateRequest request) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
 
         userMapper.updateUser(user, request);
 
@@ -65,6 +65,6 @@ public class UserService {
 
     public UserResponse getUser(String id){
         return userMapper.toUserResponse(userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found")));
+                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED)));
     }
 }
